@@ -3,19 +3,8 @@ from .base import *
 
 DEBUG = True
 
-REST_FRAMEWORK.update(
-    {"DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema"}
-)
-
-SPECTACULAR_SETTINGS = {
-    "TITLE": "プロジェクト名",
-    "DESCRIPTION": "詳細",
-    "VERSION": "1.0.0",
-}
-
 INSTALLED_APPS += [
     "debug_toolbar",
-    "drf_spectacular",
 ]
 
 MIDDLEWARE += [

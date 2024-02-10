@@ -3,7 +3,6 @@ from .base import *
 from .environment import aws_settings
 
 DEBUG = False
-ROOT_URLCONF = "project.urls.base"
 
 INSTALLED_APPS += [
     "django_ses",

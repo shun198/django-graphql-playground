@@ -35,16 +35,6 @@ ALLOWED_HOSTS = django_settings.ALLOWED_HOSTS.split()
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.BasicAuthentication",
-        "rest_framework.authentication.SessionAuthentication",
-    ],
-    "DEFAULT_PAGINATION_CLASS": "application.utils.pagination.CustomPageNumberPagination",
-    "PAGE_SIZE": 10,
-}
-
-
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -52,7 +42,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",  # Required for GraphiQL
-    "rest_framework",
     "django_filters",
     "application.apps.ApplicationConfig",
     "corsheaders",
@@ -68,7 +57,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "application.utils.middleware.LoggingMiddleware",
 ]
 
 ROOT_URLCONF = "project.urls.base"

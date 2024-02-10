@@ -2,6 +2,7 @@
 
 from django.conf.urls.static import static
 from django.urls import include, path
+
 from project.settings.base import MEDIA_ROOT, MEDIA_URL
 from project.urls.base import urlpatterns
 

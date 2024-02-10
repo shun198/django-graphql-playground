@@ -51,12 +51,12 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "django.contrib.staticfiles", # Required for GraphiQL
+    "django.contrib.staticfiles",  # Required for GraphiQL
     "rest_framework",
     "django_filters",
     "application.apps.ApplicationConfig",
     "corsheaders",
-    "graphene_django"
+    "graphene_django",
 ]
 
 MIDDLEWARE = [
@@ -205,6 +205,4 @@ LOGGING = {
 
 BASE_URL = django_settings.BASE_URL
 
-GRAPHENE = {
-    "SCHEMA": "django_root.schema.schema"
-}
+GRAPHENE = {"SCHEMA": "application.schema.schema"}

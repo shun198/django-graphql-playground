@@ -1,5 +1,3 @@
-import uuid
-
 from django.contrib.auth.models import AbstractUser, Group
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.core.validators import RegexValidator
@@ -16,11 +14,9 @@ class User(AbstractUser):
     last_name = None
     date_joined = None
     groups = None
-    id = models.UUIDField(
+    id = models.AutoField(
         primary_key=True,
-        default=uuid.uuid4,
-        editable=False,
-        db_comment="システムユーザID",
+        db_comment="ID",
     )
     employee_number = models.CharField(
         unique=True,
@@ -93,18 +89,51 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
+
 class Category(models.Model):
-    name = models.CharField(max_length=100)
+    """分類"""
+
+    id = models.AutoField(
+        primary_key=True,
+        db_comment="ID",
+    )
+    name = models.CharField(
+        max_length=100,
+        db_comment="分類名",
+    )
+
+    class Meta:
+        db_table = "Category"
+        db_table_comment = "分類"
 
     def __str__(self):
         return self.name
 
+
 class Ingredient(models.Model):
-    name = models.CharField(max_length=100)
-    notes = models.TextField()
-    category = models.ForeignKey(
-        Category, related_name="ingredients", on_delete=models.CASCADE
+    """原材料"""
+
+    id = models.AutoField(
+        primary_key=True,
+        db_comment="ID",
     )
+    name = models.CharField(
+        max_length=100,
+        db_comment="原材料名",
+    )
+    notes = models.TextField(
+        db_comment="原材料メモ",
+    )
+    category = models.ForeignKey(
+        Category,
+        related_name="ingredients",
+        on_delete=models.CASCADE,
+        db_comment="分類FK",
+    )
+
+    class Meta:
+        db_table = "Ingredient"
+        db_table_comment = "原材料"
 
     def __str__(self):
         return self.name

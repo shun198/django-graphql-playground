@@ -14,7 +14,7 @@ import os
 from logging.config import dictConfig
 from pathlib import Path
 
-from application.common.logs import ConfFile
+from common.logs import ConfFile
 
 from .environment import django_settings
 
@@ -179,7 +179,7 @@ LOGGING = {
         "slack": {
             "level": "ERROR",
             "filters": ["require_debug_false"],
-            "class": "application.utils.logs.SlackHandler",
+            "class": "common.logs.SlackHandler",
         }
     },
     "loggers": {
